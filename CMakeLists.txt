@@ -8,9 +8,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 # 添加源文件
 add_executable(${PROJECT_NAME} main.cpp
-        threadpool.cpp
-        myallocator.h
-        semaphore.h
+       #threadpool.cpp
 )
 
 # 找到需要的库
