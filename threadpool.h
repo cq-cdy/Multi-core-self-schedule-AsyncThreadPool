@@ -13,9 +13,23 @@
 #include "mutex"
 #include "condition_variable"
 #include "functional"
+#include "any.h"
+#include "semaphore.h"
+
+using uint = unsigned int;
+class Result;
 class Task {
 public:
-    virtual void run() = 0;
+
+    Task();
+    virtual void exec() final;
+
+    virtual Any run() = 0;
+
+private:
+    friend Result;
+    void setResult(Result * res);
+    Result * result_{};
 };
 
 enum class PoolMode {
@@ -28,10 +42,26 @@ public:
     using ThreadFunc = std::function<void()>;
 
     void launch();
+
     explicit Thread(ThreadFunc func);
+
     ~Thread();
+
 private:
     ThreadFunc func_;
+};
+
+class Result {
+public:
+    Result(std::shared_ptr<Task> task,bool isValid = true);
+    Any get();
+    void setVal(Any any);
+
+private:
+    Seamphore sem_;
+    Any any_;
+    std::shared_ptr<Task> task_;
+    bool isValid_ ;
 };
 
 class Threadpool {
@@ -45,25 +75,24 @@ public:
 
     Threadpool &operator=(const Thread &) = delete;
 
-    void start(unsigned int);
+    void start(uint);
 
     void setMode(PoolMode);
 
-    void setTaskQuemaskThreshHold(unsigned int threshhold);
+    void setTaskQuemaskThreshHold(uint threshhold);
 
-    void submitTask(const std::shared_ptr<Task> &sp);
-
-private:
-    static void threadFunc();
+    Result submitTask(const std::shared_ptr<Task>& sp);
 
 private:
-    using uint = unsigned int;
-    std::vector<Thread *> threads_;
+    [[noreturn]] void threadFunc();
+
+private:
+    std::vector<std::unique_ptr<Thread>> threads_;
     uint initThreadSize_{};
     std::queue<std::shared_ptr<Task>> taskQue_;
     std::atomic_uint taskSize_{};
     uint taskQuemaskThreshHold_ = 100;
-    std::mutex taskQueMtx;
+    std::mutex taskQueMtx_;
     std::condition_variable notFull_;
     std::condition_variable notEmpty_;
     PoolMode poolMode_;
