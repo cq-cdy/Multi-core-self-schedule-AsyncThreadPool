@@ -89,6 +89,6 @@ std::cout << "the result1 is :" << res.get(); << std::endl;
 std::cout << "the result2 is :" << res2.get(); << std::endl;
 ```
 ------
-### 异步获取任务返回值
+### 后续
 * 后续会加入日志系统
 
