@@ -20,7 +20,7 @@
 ```
 * 一些基本属性设置
 ``` C++
- pool.setTaskQueMaxThreshHold(4096) // 设置最大任务数量是66个，默认20000
+ pool.setTaskQueMaxThreshHold(4096) // 设置最大任务数量是4096个，默认20000
 
  pool.setThreadSizeThreshHold(100); // 设置最大线程数量是100个，默认1024
 ```
