@@ -45,7 +45,7 @@ pool.start(10); // 指定初始线程数为10；
 ### 提交任务
 ```
 template <typename Func, typename... Args>
-pool.submitTask(Task_Config config, Func&& func, Args&&... args)
+submitTask(Task_Config config, Func&& func, Args&&... args)
 ```
 >```Task_Config(int num_cores=-1, int priority =SCHED_OTHER, int mode= 99)```
 >> ```num_cores :``` 该任务所需要的CPU核心数，默认为操作系统自动调度 , 
