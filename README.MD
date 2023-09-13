@@ -85,8 +85,8 @@ pool.submitTask({6,SCHED_FIFO,50},[](){
 ### 异步获取任务返回值
 > ```get()```函数获取返回值，若线程线程函数执行完毕，则直接获取返回值，否则阻塞等待
 ```c++
-std::cout << "thee result1 is :" << res.get(); << std::endl;
-std::cout << "thee result2 is :" << res2.get(); << std::endl;
+std::cout << "the result1 is :" << res.get(); << std::endl;
+std::cout << "the result2 is :" << res2.get(); << std::endl;
 ```
 ------
 ### 异步获取任务返回值
