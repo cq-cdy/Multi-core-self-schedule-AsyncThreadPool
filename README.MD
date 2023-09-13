@@ -71,7 +71,7 @@ unsigned int task_fun(int b,int n){
     }
     return res;
 }
-//提交第一个任务，'{}'表示CPU核心数和调度策略采用磨操作系统默认
+//提交第一个任务，'{}'表示CPU核心数和调度策略采用操作系统默认的方式
 auto res = pool.submitTask({},task_fun,1,100000); 
 
 /*提交第二个任务，并设置CPU核心数为2,采用FIFO调度方式,优先级数值为90*/
