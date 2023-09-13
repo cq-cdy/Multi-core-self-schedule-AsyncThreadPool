@@ -14,11 +14,12 @@ uLong run(int b, int e) {
 }
 
 int main() {
-    ThreadPool p;
-    p.setMode(PoolMode::MODE_CACHED);
-    p.start(1);
-    p.setThreadSizeThreshHold(1);
-    auto r = p.submitTask({8, SCHED_FIFO, 99}, run, 1, 100000000);
+    ThreadPool pool;
+    pool.setMode(PoolMode::MODE_CACHED);
+    pool.setTaskQueMaxThreshHold(10000);
+    pool.setThreadSizeThreshHold(100);
+    pool.start(6);
+    auto r = pool.submitTask({8, SCHED_FIFO, 99}, run, 1, 100000000);
     std::cout << r.get() << std::endl;
     return 0;
 }
