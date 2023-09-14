@@ -4,13 +4,16 @@
 * __3.提供固定线程模式以及实时增减线程__
 * __4.用户可异步获取任务函数返回值__
 ----------------
+##  兄弟们留个star⭐吧
 
-## How to use the thread_pool? 
+----------------
+
+## How to use the thread_pool?
 
 -------------
 
 ### 一些配基本配置
-* 引入头文件 
+* 引入头文件
 ``` C++
 #include "threadpool.h"
 ```
@@ -48,7 +51,7 @@ template <typename Func, typename... Args>
 submitTask(Task_Config config, Func&& func, Args&&... args)
 ```
 >```Task_Config(int num_cores=-1, int priority =SCHED_OTHER, int mode= 99)```
->> ```num_cores :``` 该任务所需要的CPU核心数，默认为操作系统自动调度 , 
+>> ```num_cores :``` 该任务所需要的CPU核心数，默认为操作系统自动调度 ,
 >>
 >>```priority:```该任务的调度策略，默认采用操作系统自动调度
 >>> _```priority```还可以指定如:```SCHED_FIFO,SCHED_ISO,SCHED_BATCH```等调度模式_
@@ -59,7 +62,7 @@ submitTask(Task_Config config, Func&& func, Args&&... args)
 >> ```Func 可传入任意任务函数```
 >
 >>```Args :Func函数的参数列表```
-> 
+>
 
 
 ``` c++
