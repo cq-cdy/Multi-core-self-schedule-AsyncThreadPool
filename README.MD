@@ -91,4 +91,5 @@ std::cout << "the result2 is :" << res2.get(); << std::endl;
 ------
 ### 后续
 * 后续会加入日志系统
+* 再去完善一下异常处理
 
