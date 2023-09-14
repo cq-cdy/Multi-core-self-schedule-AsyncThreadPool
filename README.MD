@@ -55,7 +55,7 @@ submitTask(Task_Config config, Func&& func, Args&&... args)
 >>
 >> ```mode :```  任务被调度的优先级，数值越大优先级越高
 >>
->关于任务优先级设置可参考[[UNIX 相关API文档](https://www.man7.org/linux/man-pages/man7/sched.7.html)]
+>关于任务的调度策略和优先级设置可参考[[UNIX 相关API文档](https://www.man7.org/linux/man-pages/man7/sched.7.html)]
 >> ```Func 可传入任意任务函数```
 >
 >>```Args :Func函数的参数列表```
